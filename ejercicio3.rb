@@ -5,13 +5,14 @@ end
 def reemplazar(string)
 	array = words_from_string(string)
 	for i in (0..array.length)
-		if ( array[i] == "name")then
+		if ( array[i].eql? "name")then
 			array[i] = "pierina"
-		elsif array[i] == "surname" then
+		elsif array[i].eql? "surname" then
 			array[i] = "tufillaro"
 		end
 	end
+	puts array
 end
 
-puts reemplazar("name surname")
+reemplazar("name surname")
 

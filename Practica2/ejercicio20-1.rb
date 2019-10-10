@@ -7,6 +7,6 @@ fibonacci1 = Enumerator.new do |caller|
 end
 
 fibonacci = 0
-while fibonacci <= 400
+while fibonacci =< 400
 	fibonacci = puts fibonacci1.next
 end

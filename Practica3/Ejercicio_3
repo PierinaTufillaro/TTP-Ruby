@@ -1,0 +1,14 @@
+Ejercicio 3
+
+3. ¿Para qué sirven begin .. rescue .. else y ensure? Pensá al menos 2 casos concretos
+en que usarías estas sentencias en un script Ruby.
+
+Begin: determina a partir de que sentencia del codigo se esta evaluando si ocurre la 
+excepcion.
+
+Rescue: se utiliza para definir que excepcion se va a rescatar
+
+Else: es lo que se ejecuta si ninguna de las excepciones controladas previamente por
+rescue se levantan
+
+Ensure: se levante o no una excepcion, se ejecuta lo que le sigue a este.

@@ -1,0 +1,6 @@
+Ejercicio 4
+
+4. ¿Para qué sirve retry? ¿Cómo evitarías caer en un loop infinito al usarla?
+
+Podemos usar retry para volver a ejecutar el bloque begin/end,
+luego de haber corregido una causa de excepción.

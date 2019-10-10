@@ -1,0 +1,31 @@
+Con minitest
+
+class NombreTest < Minitest::Test
+
+	def setup
+		//preparacion para correr los test
+	end
+
+Con spect
+
+
+describe Nombre do 
+
+	before do
+		//preparacion para correr los test
+	end
+
+	describe "suma" do
+
+		it 'correctamente ceros' do
+			_(calculadora.sumar(0,0)).must_equal 0
+		end
+
+
+//RAND
+	rand(100) //cualquier numero entre 0 y 100
+	rand()    // un float
+
+ERROR: fallo que no se pudo manejar (excepcion)
+
+FAILURE: fallo de test

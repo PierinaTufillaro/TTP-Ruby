@@ -1,0 +1,7 @@
+Ejercicio 2
+
+2. ¿Cuál es la diferencia entre raise y throw? ¿Para qué usarías una u otra opción?
+
+Se utiliza raise para producir excepciones y rescue para levantarla. En cambio se
+utiliza como GoTo al throw y catch, lo que permite salir de los bloques y vuelven a un
+punto donde se define una captura para un símbolo específico.

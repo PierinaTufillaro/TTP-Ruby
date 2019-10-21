@@ -1,6 +1,6 @@
 def longitud (arreglo)
-	arreglo.map { |string| string.length  }
-
+	arreglo.map! { |string| string.length  }
+	p arreglo
 end
 
-p longitud ([ "pierina", "tufillaro"])
+longitud ([ "", ""])

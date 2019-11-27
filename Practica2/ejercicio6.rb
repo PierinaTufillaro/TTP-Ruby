@@ -25,4 +25,11 @@ until finalizado
 	end
 end
 
-# Linea 15 = Deberia devolver falso.
+#Problemas:
+#
+#Se está intentando acceder al hash fichas usando un string como key, cuando esta debería ser un símbolo.
+#
+#Puede suceder que un jugador gane, pero que luego juegue otro.
+#
+#Si los jugadores no ganan devuelven la posición en la que están, por ende la sentencia finalizado se entenderá 
+#como true.

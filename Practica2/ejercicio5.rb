@@ -3,4 +3,4 @@ def cuanto_falta? (tiempo = Time.now)
     puts "Faltan #{(mañana - tiempo).fdiv(60)} minutos " 
 end
 
-cuanto_falta?
+cuanto_falta?(Time.new(Time.now.year, Time.now.month, Time.now.day,23,59,00))

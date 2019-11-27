@@ -1,13 +1,6 @@
-def ordenar(num1,num2,num3)
-	arreglo = [num1,num2,num3]
-	arreglo.sort!
-	puts arreglo.to_s
-end
+#usando ejercicio2-bis
+require_relative 'ejercicio2-bis.rb'
 
-entrada = [10, 9, 3]
-
-def ordenarArreglo (arreglo)
-	arreglo.each {|num| 
+def enArreglo(*args)
 	
-	}
-end
+ordenar()

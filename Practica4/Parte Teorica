@@ -1,0 +1,84 @@
+Parte Teorica
+
+Gemas y Bundler
+
+1. ¿Qué es una gema? ¿Para qué sirve? ¿Qué estructura tienen?
+Una gema es un formato simple para publicar y compartir código Ruby. Cada gema tiene un nombre, versión y plataforma.
+
+2. ¿Cuáles son las principales diferencias entre el comando gem y Bundler? ¿Hacen lo
+mismo?
+
+Bundler es una gema: gem install bundler. Mantiene un entorno consistente para las aplicaciones ruby. Asegura que la aplicación que lo use tenga las dependencias necesarias para que se ejecute sin errores. Gem es un comando para instalar, buscar y listar las gemas instaladas.
+
+3. ¿Dónde instalan las gemas los comandos gem y bundle?
+
+/var/lib/gems/2.5.0/gems/bundler-2.0.2/lib/bundler.rb
+
+4. ¿Para qué sirve el comando gem server? ¿Qué información podés obtener al usarlo?
+
+Gem server servirá a todas sus gemas instaladas desde su máquina local en http: // localhost: 8808. Si visita esta url en su navegador, encontrará que el comando del servidor gem proporciona un índice de documentación HTML.
+
+5. Investigá un poco sobre Semantic Versioning (o SemVer). ¿Qué finalidad tiene? ¿Cómo se compone una versión? ¿Ante qué situaciones debería cambiarse cada una de sus partes?
+
+Bajo este esquema, los números de versión y la forma en que cambian entregan significado del código que está detrás y lo que fue modificado de una versión a otra.
+El software que use Versionado Semántico DEBE declarar una API pública. Esta API puede ser declarada en el código mismo o existir en documentación estricta. De cualquier manera, debería ser precisa y completa.
+Un número normal de versión DEBE tomar la forma X.Y.Z donde X, Y, y Z son enteros no negativos. X es la versión “major”, Y es la versión “minor”, y Z es la versión “patch”. Cada elemento DEBE incrementarse numéricamente en incrementos de 1. Por ejemplo: 1.9.0 -> 1.10.0 -> 1.11.0.
+
+La versión major en cero (0.y.z) es para desarrollo inicial. Cualquier cosa puede cambiar en cualquier momento. El API pública no debiera ser considerada estable. La versión 1.0.0 define el API pública. La forma en que el número de versión es incrementado después de este release depende de esta API pública y de cómo esta cambia.
+
+La versión patch Z (x.y.Z | x > 0) DEBE incrementarse cuando se introducen solo arreglos compatibles con la versión anterior. Un arreglo de bug se define como un cambio interno que corrige un comportamiento erróneo.
+
+La versión minor Y (x.Y.z | x > 0) DEBE ser incrementada si se introduce nueva funcionalidad compatible con la versión anterior. Se DEBE incrementar si cualquier funcionalidad de la API es marcada como deprecada. PUEDE ser incrementada si se agrega funcionalidad o arreglos considerables al código privado. Puede incluir cambios de nivel patch. La versión patch DEBE ser reseteada a 0 cuando la versión minor es incrementada.
+
+La versión major X (X.y.z | X > 0) DEBE ser incrementada si cualquier cambio no compatible con la versión anterior es introducida a la API pública. PUEDE incluir cambios de niver minor y/o patch. Las versiones patch y minor DEBEN ser reseteadas a 0 cuando se incrementa la versión major.
+
+7. Utilizando el proyecto creado en el punto anterior como referencia, contestá las
+siguientes preguntas:
+
+	1. ¿Qué finalidad tiene el archivo Gemfile?	
+	Con el Gemfile podremos establecer la fuente de donde obtener las gemas, cómo se require la gema y la versión de una gema: >= x.y o ~> x.y.z
+
+	2. ¿Para qué sirve la directiva source del Gemfile? ¿Cuántas pueden haber en un
+	mismo archivo?
+
+	En la parte superior del Gemfile, agregue una línea para la fuente de Rubygems que contenga las gemas enumeradas en el Gemfile. 
+	Es posible, pero no recomendado a partir de Bundler 1.7, agregar múltiples líneas de origen globales. Cada una de estas fuentes DEBE ser un repositorio válido de Rubygems.
+
+	Los sources se verifican en busca de gemas siguiendo las heurísticas descritas en PRIORIDAD DE FUENTE. Si se encuentra una gema en más de un source global, Bundler imprimirá una advertencia después de instalar la gema indicando qué source se utilizó y enumerando los otros sources donde está disponible la gema. Se puede seleccionar un source específico para gemas que necesitan usar un repositorio no estándar, suprimiendo esta advertencia, usando :source option o source block.
+
+	3. Acorde a cómo agregaste la gema colorputs, ¿qué versión se instaló de la misma?
+	Si mañana se publicara la versión 7.3.2, ¿esta se instalaría en tu proyecto? ¿Por
+	qué? ¿Cómo podrías limitar esto y hacer que sólo se instalen releases de la gema
+	en las que no cambie la versión mayor de la misma?
+
+	Se instaló la version 0.2.3, si se instala una nueva version, no importa de que tipo sea el cambio de la nueva version, se va a instalar por la flecha que tiene delante la version en el GemFile.
+	Para que solo se instalen los releases hay que poner: -> 0
+
+	4. ¿Qué ocurrió la primera vez que ejecutaste prueba.rb? ¿Por qué?
+	
+	La operacion fallo porque no tenia instalada la gema colorputs.
+
+	5. ¿Qué cambió al ejecutar bundle install?
+
+	Se instalaron todas las gemas necesarias para ejecutar el archivo, por lo tanto luego funcionó colorputs
+
+	6. ¿Qué diferencia hay entre bundle install y bundle update?
+
+	Bundle install instala las gemas especificadas en su Gemfile. Si es la primera vez que ejecuta bundle install (y no existe un Gemfile.lock), Bundler buscará todas las fuentes remotas, resolverá las dependencias e instalará todas las gemas necesarias. 
+	Bundle update se utiliza para actualizar explícitamente la versión de una gema.
+
+	7. ¿Qué ocurrió al ejecutar prueba_dos.rb de las distintas formas enunciadas? ¿Por
+	qué? ¿Cómo modificarías el archivo prueba_dos.rb para que funcione
+	correctamente?
+
+	Al ejecutar ruby prueba_dos.rb, no se reconoció la gema. Para que funcione correctamente, primero ejecutaria bundler y luego el programa.
+
+
+Sinatra
+
+1. ¿Qué es Rack? ¿Qué define? ¿Qué requisitos impone?
+
+Rack es la tecnología subyacente detrás de casi todos los marcos web en el mundo de Ruby. "Rack" es en realidad algunas cosas diferentes:
+
+Una arquitectura: Rack define una interfaz muy simple, y cualquier código que se ajuste a esta interfaz se puede usar en una aplicación Rack. Esto hace que sea muy fácil construir fragmentos de código pequeños, enfocados y reutilizables y luego usar Rack para componer estos bits en una aplicación más grande.
+Una gema Ruby - Rack se distribuye como una gema Ruby que proporciona el código de pegamento necesario para componer nuestro código.

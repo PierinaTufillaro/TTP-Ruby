@@ -1,14 +1,44 @@
 module Countable
-	
-	def count_invocations_of(sym)
-		
-	end
 
-	def invoked?(sym)
-		
-	end
+    def invocations
+        @invocations ||= Hash.new(0)
+    end
 
-	def invoked(sym)
-		
-	end
+    module ClassMethods
+        def count_invocations_of(sym)
+            alias_method(":original_#{sym}", sym) 
+
+            define_method "#{sym}" do
+                invocations[__method__] += 1
+                send(":original_#{sym}")
+            end
+        end
+    end
+
+    def invoked?(sym)
+        @invocations[sym] > 0
+    end
+
+    def invoked(sym)
+        @invocations[sym]
+    end
+
+    def self.included(base)
+        base.extend ClassMethods
+    end
+
+end
+
+
+class Prueba
+
+    include Countable
+
+    def fun1
+    end
+
+    def fun2
+    end
+
+    count_invocations_of :fun1
 end

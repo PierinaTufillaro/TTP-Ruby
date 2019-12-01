@@ -1,0 +1,13 @@
+- Al hacer minimo comun multiplo tira error por el *
+- Al hacer maximo comun divisor nunca muestra en 
+pantalla que paso.
+(los dos errores anteriores se solucionaron
+convirtiendo en entero a los parametros ya
+que llegan como strings)
+
+- Como ejecutar un POST
+
+PARA REALIZAR UN POST DEBO ABRIR UNA TERMINAL PARALELA
+Y PONER 
+	curl -d "" http://localhost:4567/random/1/5
+	curl -X POST http://localhost:4567/random/1/5

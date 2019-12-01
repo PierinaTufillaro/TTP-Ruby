@@ -1,0 +1,43 @@
+Pasos seguidos:
+1. Inicializá un proyecto nuevo en un directorio vacío con el comando bundle init
+
+2. Modificá el archivo Gemfile del proyecto y agregá la gema colorputs
+
+3. Creá el archivo prueba.rb y agregale el siguiente contenido:
+
+require 'colorputs'
+puts "Hola!", :rainbow_b
+
+4. Ejecutá el archivo anterior de las siguientes maneras:
+
+ruby prueba.rb
+-Al ejecutar el archivo de esta manera no se puede cargar la gema colorputs.
+
+bundle exec ruby prueba.rb
+-Al ejecutar el archivo de esta manera se indica que no se encuentra a la gema en ninguno de las fuentes (sources) listadas en el gemfile.
+
+5. Ahora utilizá el comando bundle install para instalar las dependencias del
+proyecto.
+
+-Con este comando instalo las gemas indicadas en el Gemfile.
+
+6. Volvé a ejecutar el archivo de las dos maneras enunciadas en el paso 4.
+
+ruby prueba.rb
+-Funciona la gema.
+
+bundle exec ruby prueba.rb
+-Tambien funciona la gema.
+
+7. Creá un nuevo archivo prueba_dos.rb con el siguiente contenido:
+
+Bundler.require
+puts "Chau!", :red
+
+8. Ahora ejecutá este nuevo archivo:
+
+ruby prueba_dos.rb
+-Al ejecutar el archivo de esta manera se indica que la constate Bundler NO fue inicializada.
+
+bundle exec ruby prueba_dos.rb
+-Al ejecutarlo de esta manera, se esta inicializando Bundler con la parte del comando "bundle exec" y por lo tanto si funciona.

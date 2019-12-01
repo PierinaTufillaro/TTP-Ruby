@@ -1,0 +1,14 @@
+Parte Teorica
+
+Sinatra
+
+Sinatra
+
+1. ¿Qué es Rack? ¿Qué define? ¿Qué requisitos impone?
+
+Rack es la tecnología subyacente detrás de casi todos los marcos web en el mundo de Ruby. "Rack" es en realidad algunas cosas diferentes:
+
+Una arquitectura: Rack define una interfaz muy simple, y cualquier código que se ajuste a esta interfaz se puede usar en una aplicación Rack. Esto hace que sea muy fácil construir fragmentos de código pequeños, enfocados y reutilizables y luego usar Rack para componer estos bits en una aplicación más grande.
+Una gema Ruby - Rack se distribuye como una gema Ruby que proporciona el código de pegamento necesario para componer nuestro código.
+
+3.  Simplemente podemos considerar como DSL cualquier lenguaje que esté especializado en modelar o resolver un conjunto específico de problemas. Este conjunto específico de problemas es el llamado dominio de aplicación o de negocio. La mayor parte de los lenguajes de programación no se pueden considerar DSL ya que no están diseñados para resolver un conjunto específico de problemas, sino para resolver cualquier tipo de problema. Son pues, lenguajes generalistas (o turing completos).

@@ -32,53 +32,56 @@ La versión minor Y (x.Y.z | x > 0) DEBE ser incrementada si se introduce nueva 
 
 La versión major X (X.y.z | X > 0) DEBE ser incrementada si cualquier cambio no compatible con la versión anterior es introducida a la API pública. PUEDE incluir cambios de niver minor y/o patch. Las versiones patch y minor DEBEN ser reseteadas a 0 cuando se incrementa la versión major.
 
+6. Se encuentra en los PASOS SEGUIDOS en la carpeta Ejercicio-6.
+
 7. Utilizando el proyecto creado en el punto anterior como referencia, contestá las
 siguientes preguntas:
 
 	1. ¿Qué finalidad tiene el archivo Gemfile?	
 	Con el Gemfile podremos establecer la fuente de donde obtener las gemas, cómo se require la gema y la versión de una gema: >= x.y o ~> x.y.z
 
-	2. ¿Para qué sirve la directiva source del Gemfile? ¿Cuántas pueden haber en un
-	mismo archivo?
+	2. ¿Para qué sirve la directiva source del Gemfile? ¿Cuántas pueden haber mas de una en un mismo archivo?
 
 	En la parte superior del Gemfile, agregue una línea para la fuente de Rubygems que contenga las gemas enumeradas en el Gemfile. 
 	Es posible, pero no recomendado a partir de Bundler 1.7, agregar múltiples líneas de origen globales. Cada una de estas fuentes DEBE ser un repositorio válido de Rubygems.
 
 	Los sources se verifican en busca de gemas siguiendo las heurísticas descritas en PRIORIDAD DE FUENTE. Si se encuentra una gema en más de un source global, Bundler imprimirá una advertencia después de instalar la gema indicando qué source se utilizó y enumerando los otros sources donde está disponible la gema. Se puede seleccionar un source específico para gemas que necesitan usar un repositorio no estándar, suprimiendo esta advertencia, usando :source option o source block.
 
-	3. Acorde a cómo agregaste la gema colorputs, ¿qué versión se instaló de la misma?
-	Si mañana se publicara la versión 7.3.2, ¿esta se instalaría en tu proyecto? ¿Por
-	qué? ¿Cómo podrías limitar esto y hacer que sólo se instalen releases de la gema
-	en las que no cambie la versión mayor de la misma?
+	3. Acorde a cómo agregaste la gema colorputs, ¿qué versión se instaló de la misma? Si mañana se publicara la versión 7.3.2, ¿esta se instalaría en tu proyecto? ¿Por qué? ¿Cómo podrías limitar esto y hacer que sólo se instalen releases de la gema en las que no cambie la versión mayor de la misma?
 
 	Se instaló la version 0.2.3, si se instala una nueva version, no importa de que tipo sea el cambio de la nueva version, se va a instalar por la flecha que tiene delante la version en el GemFile.
 	Para que solo se instalen los releases hay que poner: -> 0
 
 	4. ¿Qué ocurrió la primera vez que ejecutaste prueba.rb? ¿Por qué?
 	
-	La operacion fallo porque no tenia instalada la gema colorputs.
+	Al ejecutar el archivo de esta manera no se puede cargar la gema colorputs
 
 	5. ¿Qué cambió al ejecutar bundle install?
 
-	Se instalaron todas las gemas necesarias para ejecutar el archivo, por lo tanto luego funcionó colorputs
+	-Con este comando instalo las gemas indicadas en el Gemfile. Por lo tanto se instalo colorputs. 
 
 	6. ¿Qué diferencia hay entre bundle install y bundle update?
 
 	Bundle install instala las gemas especificadas en su Gemfile. Si es la primera vez que ejecuta bundle install (y no existe un Gemfile.lock), Bundler buscará todas las fuentes remotas, resolverá las dependencias e instalará todas las gemas necesarias. 
 	Bundle update se utiliza para actualizar explícitamente la versión de una gema.
 
-	7. ¿Qué ocurrió al ejecutar prueba_dos.rb de las distintas formas enunciadas? ¿Por
-	qué? ¿Cómo modificarías el archivo prueba_dos.rb para que funcione
-	correctamente?
+	7. ¿Qué ocurrió al ejecutar prueba_dos.rb de las distintas formas enunciadas? ¿Por qué? ¿Cómo modificarías el archivo prueba_dos.rb para que funcione correctamente?
 
-	Al ejecutar ruby prueba_dos.rb, no se reconoció la gema. Para que funcione correctamente, primero ejecutaria bundler y luego el programa.
+	
+	Al ejecutar el archivo de esta manera:
 
+	ruby prueba_dos.rb
 
-Sinatra
+	indica que la constate Bundler NO fue inicializada.
 
-1. ¿Qué es Rack? ¿Qué define? ¿Qué requisitos impone?
+	Al ejecutarlo de esta manera:
 
-Rack es la tecnología subyacente detrás de casi todos los marcos web en el mundo de Ruby. "Rack" es en realidad algunas cosas diferentes:
+	bundle exec ruby prueba_dos.rb
 
-Una arquitectura: Rack define una interfaz muy simple, y cualquier código que se ajuste a esta interfaz se puede usar en una aplicación Rack. Esto hace que sea muy fácil construir fragmentos de código pequeños, enfocados y reutilizables y luego usar Rack para componer estos bits en una aplicación más grande.
-Una gema Ruby - Rack se distribuye como una gema Ruby que proporciona el código de pegamento necesario para componer nuestro código.
+	se esta inicializando Bundler con la parte del comando "bundle exec" y por lo tanto si funciona.
+
+	CONCLUSION: Para que funcione correctamente el archivo ejecutaria el comando:
+
+	bundle exect ruby prueba_dos.rb
+
+	que ademas de ejecutar el archivo, primeramente prepara a bundler a traves del "bundle exec" haciendo que todas las gemas especificadas en el gemfile esten disponibles para ser requeridas.	
